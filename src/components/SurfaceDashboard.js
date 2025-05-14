@@ -119,7 +119,7 @@ export default function SurfaceDashboard() {
     const validFiles = fileArray.filter(file => file.name.endsWith('.log') || file.name.endsWith('.txt'));
     
     if (validFiles.length === 0) {
-      alert('Lütfen .log veya .txt uzantılı dosyalar seçin.');
+      alert('Please select files with a .log or .txt extension.');
       return;
     }
     
@@ -165,16 +165,16 @@ export default function SurfaceDashboard() {
               updateDailyStats(newLoadedFiles);
               setLoadedFiles(newLoadedFiles);
             } else {
-              alert(`${file.name} dosyasında geçerli JSON verisi bulunamadı.`);
+              alert(`${file.name} No valid JSON data was found in the file.`);
             }
           } catch (error) {
-            console.error('Dosya işleme hatası:', error);
-            alert(`${file.name} dosyası işlenirken bir hata oluştu.`);
+            console.error('File processing error:', error);
+            alert(`${file.name} An error occurred while processing the file.`);
           }
         };
         reader.readAsText(file);
       } else {
-        alert(`${file.name} dosyası zaten yüklü.`);
+        alert(`${file.name} The file is already loaded.`);
       }
     });
   };
@@ -387,7 +387,7 @@ export default function SurfaceDashboard() {
 
   const getFileDisplayName = (fileInfo) => {
     if (fileInfo.date && fileInfo.time && fileInfo.surface) {
-      return `${fileInfo.date} ${fileInfo.time} - ${fileInfo.surface} Yüzeyi`;
+      return `${fileInfo.date} ${fileInfo.time} - ${fileInfo.surface} Sruface`;
     }
     return '';
   };
@@ -458,7 +458,7 @@ export default function SurfaceDashboard() {
               onClick={() => fileInputRef.current.click()}
             >
               <FileText size={16} className="mr-1" />
-              Dosya Seç
+              Select File
             </button>
           </div>
           
